@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "devDependencies": {
+    "@types/json5": "^2.1.0"
+  }
+}
