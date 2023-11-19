@@ -16,22 +16,22 @@ export const url = {
 
 export const studentSidebarLinks = [
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/dashboard",
+    url: "/dashboard",
     name: "Dashboard",
     icon: <MdDashboard size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/transactions",
+    url: "/transactions",
     name: "Transaction History",
     icon: <MdHistory size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/point-allocations",
+    url: "/point-allocations",
     name: "Point Allocation History",
     icon: <MdHistory size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/profile",
+    url: "/profile",
     name: "Profile",
     icon: <IoPersonCircleOutline size={25} color="#fff" />,
   },
@@ -39,37 +39,37 @@ export const studentSidebarLinks = [
 
 export const adminSidebarLinks = [
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/admin",
+    url: "/admin",
     name: "Dashboard",
     icon: <MdDashboard size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/admin/admin-transactions",
+    url: "/admin/admin-transactions",
     name: "Transaction History",
     icon: <MdHistory size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/admin/admin-point-allocations",
+    url: "/admin/admin-point-allocations",
     name: "Point Allocation History",
     icon: <MdHistory size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/admin/student-management",
+    url: "/admin/student-management",
     name: "Student Management",
     icon: <IoPersonCircleOutline size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/admin/subjects",
+    url: "/admin/subjects",
     name: "Subject Management",
     icon: <IoPersonCircleOutline size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/admin/reports",
+    url: "/admin/reports",
     name: "Reports",
     icon: <TbReport size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/admin/admin-profile",
+    url: "/admin/admin-profile",
     name: "Profile",
     icon: <IoPersonCircleOutline size={25} color="#fff" />,
   },
@@ -77,42 +77,42 @@ export const adminSidebarLinks = [
 
 export const superAdminSidebarLinks = [
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/admin",
+    url: "/admin",
     name: "Dashboard",
     icon: <MdDashboard size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/admin/admin-transactions",
+    url: "/admin/admin-transactions",
     name: "Transaction History",
     icon: <MdHistory size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/admin/admin-point-allocations",
+    url: "/admin/admin-point-allocations",
     name: "Point Allocation History",
     icon: <MdHistory size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/admin/student-management",
+    url: "/admin/student-management",
     name: "Student Management",
     icon: <IoPersonCircleOutline size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/admin/admin-management",
+    url: "/admin/admin-management",
     name: "Admin Management",
     icon: <MdOutlineAdminPanelSettings size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/admin/subjects",
+    url: "/admin/subjects",
     name: "Subjects",
     icon: <TbReport size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/admin/reports",
+    url: "/admin/reports",
     name: "Reports",
     icon: <TbReport size={25} color="#fff" />,
   },
   {
-    url: process.env.NEXT_PUBLIC_DEFAULT_URL + "/admin/admin-profile",
+    url: "/admin/admin-profile",
     name: "Profile",
     icon: <IoPersonCircleOutline size={25} color="#fff" />,
   },
