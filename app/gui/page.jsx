@@ -37,7 +37,7 @@ const Gui = () => {
         { event: "*", schema: "public", table: "capacity" },
         (payload) => {
           fetchCapacity();
-        },
+        }
       )
       .subscribe();
   }, [capacity]);
@@ -96,7 +96,7 @@ const Gui = () => {
       </main>
     </div>
   ) : (
-    <div className="relative">
+    <div className="relative max-w-[1024px] max-h-[468px] mx-auto">
       <header className="h-[167px] bg-error flex justify-center items-center"></header>
       <main>
         <div
@@ -107,7 +107,7 @@ const Gui = () => {
           </h1>
           <FaTrash className="w-[139px] h-[139px] mx-auto mt-[40px] text-error animate-bounce" />
           <div
-            className={`font-semibold text-[15px] text-white bg-error uppercase h-[45px] mt-[55px] pointer-events-none select-none`}
+            className={`font-semibold text-[15px] text-white flex items-center justify-center w-50% bg-error uppercase h-[45px] mt-[55px] pointer-events-none select-none rounded-b-xl`}
           >
             Please wait for the utility to empty the bin
           </div>

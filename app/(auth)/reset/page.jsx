@@ -33,7 +33,6 @@ export default function Page() {
         "Reset password link sent. Please Check your email",
         false
       );
-      router.push("/login");
     }
   };
   return (

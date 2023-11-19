@@ -32,7 +32,7 @@ const SignUpForm = () => {
         CustomToast(
           "error",
           "Student number is already taken, Please try again.",
-          true,
+          true
         );
         return;
       }
@@ -51,7 +51,7 @@ const SignUpForm = () => {
         CustomToast(
           "error",
           "There's something wrong on creating your account, Please try again later.",
-          true,
+          true
         );
       } else {
         setLoading(false);
@@ -74,7 +74,7 @@ const SignUpForm = () => {
           CustomToast(
             "error",
             "There's something wrong on creating your account, Please try again later.",
-            true,
+            true
           );
         } else {
           const { error: Er } = await supabase
@@ -98,7 +98,7 @@ const SignUpForm = () => {
             CustomToast(
               "error",
               "There's something wrong on creating your account, Please try again later.",
-              true,
+              true
             );
           }
         }
@@ -175,6 +175,11 @@ const SignUpForm = () => {
       minLength: {
         value: 8,
         message: "Password must have at least 8 characters",
+      },
+      pattern: {
+        value: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/g,
+        message:
+          "Password must contain at least one uppercase letter, one lowercase letter and one number",
       },
     },
   };
