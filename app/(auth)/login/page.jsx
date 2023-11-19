@@ -28,7 +28,8 @@ const Login = () => {
         <Image
           src={logo}
           alt="Logo"
-          className="absolute bottom-4 w-[85%] h-auto"
+          className="absolute bottom-4 w-[85%] h-auto cursor-pointer"
+          onClick={() => router.push("/")}
         />
       </div>
       <div className="flex flex-[5] items-center justify-center min-h-screen lg:py-5 bg-[#5b801a70]">
@@ -36,7 +37,8 @@ const Login = () => {
           <Image
             src={logo}
             alt="Logo"
-            className="lg:hidden block mb-16 md:w-50 sm:w-40"
+            className="lg:hidden block mb-16 md:w-50 sm:w-40 cursor-pointer"
+            onClick={() => router.push("/")}
           />
           <h1 className="text-[#5b801a] font-semibold lg:text-3xl md:text-2xl text-xl lg:mb-10 mb-5">
             Login your Account

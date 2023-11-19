@@ -38,7 +38,7 @@ const UpdatePassword = () => {
         CustomToast(
           "error",
           "Something went wrong. Please try again later",
-          true,
+          true
         );
       } else {
         setSuccess(true);
@@ -69,7 +69,8 @@ const UpdatePassword = () => {
           <Image
             src={logo}
             alt="Logo"
-            className="absolute bottom-4 w-[85%] h-auto"
+            className="absolute bottom-4 w-[85%] h-auto cursor-pointer"
+            onClick={() => router.push("/")}
           />
         </div>
         <div className="flex flex-[5] items-center justify-center min-h-screen lg:py-5 bg-[#5b801a70]">
@@ -79,7 +80,8 @@ const UpdatePassword = () => {
               alt="Logo"
               className={`lg:hidden block mb-16 md:w-50 sm:w-40 ${
                 success ? "hidden" : "block"
-              }`}
+              } cursor-pointer`}
+              onClick={() => router.push("/")}
             />
             {success && (
               <div className="flex flex-col items-center lg:p-3">

@@ -42,7 +42,8 @@ export default function Page() {
           <Image
             src={logo}
             alt="Logo"
-            className="absolute bottom-4 w-[85%] h-auto"
+            className="absolute bottom-4 w-[85%] h-auto cursor-pointer"
+            onClick={() => router.push("/")}
           />
         </div>
         <div className="flex flex-[5] items-center justify-center min-h-screen lg:py-5 bg-[#5b801a70]">
@@ -50,9 +51,10 @@ export default function Page() {
             <Image
               src={logo}
               alt="Logo"
-              className={`lg:hidden block mb-16 md:w-50 sm:w-40 ${
+              className={`lg:hidden block mb-16 md:w-50 sm:w-40 cursor-pointer ${
                 isSend ? "hidden" : "block"
               }`}
+              onClick={() => router.push("/")}
             />
             {isSend && (
               <div className="flex flex-col items-center lg:p-3">

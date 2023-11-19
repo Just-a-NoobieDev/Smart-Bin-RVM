@@ -45,18 +45,29 @@ const Manual = () => {
               <li>Once you are finish, click FINISH and Confirm.</li>
               <li>Check your Dashboard/Account to see your points.</li>
             </ol>
-            <button
-              className="absolute right-[70px] w-[100px] h-[52px] bg-main bottom-[-20px]"
-              onClick={() => router.push("./login")}
-            >
-              <Link
-                href="./login"
-                className="flex justify-center items-center gap-2 text-white text-[15px] font-semibold"
+            <div className="absolute right-[70px] flex gap-2">
+              <button
+                className=" w-[100px] h-[52px] bg-main bottom-[-20px]"
+                onClick={() => router.push("./login")}
               >
-                Next
-                <BsFillArrowRightCircleFill className="w-[16px] h-[16px]" />
-              </Link>
-            </button>
+                <Link
+                  href="./login"
+                  className="flex justify-center items-center gap-2 text-white text-[15px] font-semibold"
+                >
+                  Next
+                  <BsFillArrowRightCircleFill className="w-[16px] h-[16px]" />
+                </Link>
+              </button>
+              <button className=" w-[100px] h-[52px]  bottom-[-20px] outline outline-1 outline-[#5B801A]">
+                <Link
+                  href="./"
+                  className="flex justify-center items-center gap-2 text-main text-[15px] font-semibold"
+                >
+                  Back
+                  <BsFillArrowRightCircleFill className="w-[16px] h-[16px] text-main" />
+                </Link>
+              </button>
+            </div>
           </div>
         </div>
       </div>

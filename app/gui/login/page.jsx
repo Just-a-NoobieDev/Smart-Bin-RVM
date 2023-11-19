@@ -9,6 +9,7 @@ import CustomToast from "@/utils/CustomToast";
 import { useForm } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { MdOutlineError } from "react-icons/md";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
 const Login = () => {
   const {
@@ -73,7 +74,7 @@ const Login = () => {
   if (student_number) return router.push("/gui/counter");
 
   return (
-    <div className="box-border max-w-[1024px] h-[468px] mx-auto">
+    <div className="box-border max-w-[1024px] h-[468px] mx-auto relative">
       <header
         className={`font-semibold h-[103px] bg-main text-[48px] text-center flex items-center justify-center`}
       >
@@ -134,6 +135,15 @@ const Login = () => {
             Login
           </button>
         </form>
+        <button className="absolute right-[70px] w-[100px] h-[52px]  bottom-[-20px] outline outline-1 outline-[#5B801A]">
+          <Link
+            href="./manual"
+            className="flex justify-center items-center gap-2 text-main text-[15px] font-semibold"
+          >
+            Back
+            <BsFillArrowRightCircleFill className="w-[16px] h-[16px] text-main" />
+          </Link>
+        </button>
       </main>
     </div>
   );
