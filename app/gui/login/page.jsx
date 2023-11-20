@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { FaQrcode } from "react-icons/fa";
 import supabase from "@/lib/supabase-browser";
 import { useRouter } from "next/navigation";
 import CustomToast from "@/utils/CustomToast";
@@ -10,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { MdOutlineError } from "react-icons/md";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
+import moment from "moment";
 
 const Login = () => {
   const {
@@ -33,38 +33,61 @@ const Login = () => {
   const handleSignIn = async () => {
     const studentNo = getValues("studentNo"); // Get the current input value
     try {
-      const { data, error } = await supabase
-        .from("tbl_student_users")
-        .select("*")
+      const dateStart = `${moment()
+        .startOf("month")
+        .format("YYYY-MM-DD")} 00:00:00`;
+      const dateEnd = `${moment()
+        .endOf("month")
+        .format("YYYY-MM-DD")} 23:59:59`;
+
+      const { data: limit, error: limitError } = await supabase
+        .from("tbl_transactions")
+        .select("number_bottles")
         .eq("student_number", studentNo)
+        .gte("date", dateStart)
+        .lte("date", dateEnd)
         .single();
 
-      if (error) {
+      if (!limitError && limit.number_bottles < 60) {
+        const { data, error } = await supabase
+          .from("tbl_student_users")
+          .select("*")
+          .eq("student_number", studentNo)
+          .single();
+
+        if (error) {
+          CustomToast(
+            "error",
+            "There's no Account associated with this student number.",
+            true
+          );
+          return;
+        }
+
+        if (data) {
+          const { error } = await supabase
+            .from("is_loggedin")
+            .update({ status: 1 })
+            .eq("id", 1)
+            .select();
+
+          if (!error) {
+            CustomToast(
+              "Success",
+              `It's good to have you back ${data.name}`,
+              false
+            );
+            localStorage.setItem("student_number", studentNo);
+
+            router.push("/gui/counter");
+          }
+        }
+      } else {
         CustomToast(
           "error",
-          "There's no Account associated with this student number.",
+          "You have reached the limit of 60 bottles or 3 points per month.",
           true
         );
-        return;
-      }
-
-      if (data) {
-        const { error } = await supabase
-          .from("is_loggedin")
-          .update({ status: 1 })
-          .eq("id", 1)
-          .select();
-
-        if (!error) {
-          CustomToast(
-            "Success",
-            `It's good to have you back ${data.name}`,
-            false
-          );
-          localStorage.setItem("student_number", studentNo);
-
-          router.push("/gui/counter");
-        }
       }
     } catch (error) {
       console.error("Error in handleSignIn:", error);

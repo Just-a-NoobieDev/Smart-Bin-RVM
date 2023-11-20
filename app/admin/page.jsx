@@ -13,8 +13,7 @@ import History from "./components/AdminHistory";
 import supabase from "@/lib/supabase-browser";
 import moment, { duration } from "moment/moment";
 import CustomToast from "@/utils/CustomToast";
-import { ca } from "date-fns/locale";
-import toast from "react-hot-toast";
+import { FaTrash } from "react-icons/fa";
 
 const AdminDashboard = () => {
   const [btoday, setBtoday] = useState(0);
@@ -47,12 +46,12 @@ const AdminDashboard = () => {
   // const bgColor = binBackground;
 
   const sendNotification = () => {
-    // CustomToast(
-    //   "Warning",
-    //   "The Bin is almost at Full Capacity",
-    //   true,
-    //   Infinity,
-    // );
+    CustomToast(
+      "Warning",
+      "The Bin is almost at Full Capacity",
+      true,
+      Infinity
+    );  
   };
 
   const sendFullNotification = () => {
@@ -84,6 +83,17 @@ const AdminDashboard = () => {
       setBinColor(4);
       setBinBackground(4);
       // CustomToast("Warning", "The Bin is almost at Full Capacity", true);
+    }
+
+    if (data.value == 100) {
+      setSendFull(true);
+      setSend(false);
+    } else if (data.value >= 80) {
+      setSend(true);
+      setSendFull(false);
+    } else {
+      setSendFull(false);
+      setSend(false);
     }
   };
 
@@ -504,14 +514,6 @@ const AdminDashboard = () => {
         { event: "*", schema: "public", table: "capacity" },
         (payload) => {
           getBinLevel();
-          // if (capacity == 100) {
-          //   setSendFull(true);
-          // } else if (capacity >= 80) {
-          //   setSend(true);
-          // } else {
-          //   setSendFull(false);
-          //   setSend(false);
-          // }
         }
       )
       .subscribe();
