@@ -92,11 +92,11 @@ const UsePointsModal = () => {
         const used = await getUsedPointsPerSubject();
         const available = 1 - used;
 
-        if (available < 0) {
+        if (available <= 0) {
           CustomToast(
             "Sorry",
             "You don't have enough points. Please add points by collecting bottles with us",
-            true,
+            true
           );
           return;
         }
@@ -107,7 +107,7 @@ const UsePointsModal = () => {
             `We cannot proceed your request. The available points that you can use to this subject this month is ${(
               Math.floor(available * 100) / 100
             ).toFixed(2)}`,
-            true,
+            true
           );
           return;
         }

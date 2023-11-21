@@ -29,7 +29,7 @@ export const Cols = [
     ),
   },
   {
-    accessorKey: "date",
+    accessorKey: "created_at",
     header: ({ column }) => {
       return (
         <Button

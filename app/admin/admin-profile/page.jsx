@@ -119,7 +119,9 @@ function AdminProfile() {
       }
     };
 
-    fetchadminData();
+    if (user) {
+      fetchadminData();
+    }
   }, [user, fetch]);
 
   const toggleEditMode = () => {

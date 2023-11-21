@@ -98,11 +98,11 @@ const UpdateDetails = ({ id }) => {
               <CardHeader>
                 <div className="flex justify-between  items-center">
                   <CardTitle className="text-[27px] leading-9 font-semibold text-main">
-                    Update Student Details
+                    Update Subject Details
                   </CardTitle>
                 </div>
                 <CardDescription>
-                  This shows the details of this Student&apos;s Account.
+                  This shows the details of this Subject&apos;s.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -144,7 +144,7 @@ const UpdateDetails = ({ id }) => {
                         htmlFor="studNo"
                         className="text-[15px] font-semibold text-main"
                       >
-                        Subject Name
+                        Subject Instructor
                       </Label>
                       <Input
                         id="studNo"
