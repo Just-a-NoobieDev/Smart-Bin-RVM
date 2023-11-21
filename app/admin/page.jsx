@@ -14,6 +14,7 @@ import supabase from "@/lib/supabase-browser";
 import moment, { duration } from "moment/moment";
 import CustomToast from "@/utils/CustomToast";
 import { FaTrash } from "react-icons/fa";
+import FullCapacityModal from "./components/CapacityModal";
 
 const AdminDashboard = () => {
   const [btoday, setBtoday] = useState(0);
@@ -39,24 +40,29 @@ const AdminDashboard = () => {
   let [binBackground, setBinBackground] = useState(0);
   const [send, setSend] = useState(false);
   const [sendFull, setSendFull] = useState(false);
+  const [close, setClose] = useState(false);
+
+  const handleCloseModal = () => {
+    setSendFull(false);
+  };
 
   // const fillHeight = capacity * 0.55;
 
   // const textColor = binColor;
   // const bgColor = binBackground;
 
-  const sendNotification = () => {
-    CustomToast(
-      "Warning",
-      "The Bin is almost at Full Capacity",
-      true,
-      Infinity
-    );  
-  };
+  // const sendNotification = () => {
+  //   CustomToast(
+  //     "Warning",
+  //     "The Bin is almost at Full Capacity",
+  //     true,
+  //     Infinity
+  //   );
+  // };
 
-  const sendFullNotification = () => {
-    CustomToast("Warning", "The Bin is at Full Capacity", true, Infinity);
-  };
+  // const sendFullNotification = () => {
+  //   CustomToast("Warning", "The Bin is at Full Capacity", true, Infinity);
+  // };
 
   const getBinLevel = async () => {
     const { data, error } = await supabase
@@ -460,13 +466,13 @@ const AdminDashboard = () => {
     getNovember();
     getDecember();
 
-    if (send) {
-      sendNotification();
-    }
+    // if (send) {
+    //   sendNotification();
+    // }
 
-    if (sendFull) {
-      sendFullNotification();
-    }
+    // if (sendFull) {
+    //   // sendFullNotification();
+    // }
 
     supabase
       .channel("custom-all-channel")
@@ -629,6 +635,15 @@ const AdminDashboard = () => {
           <Line data={data} />
         </div>
       </div>
+      {sendFull && !close && (
+        <FullCapacityModal
+          isOpen={sendFull}
+          onClose={handleCloseModal}
+          message={
+            "We're sorry, but the capacity of the bin is currently full."
+          }
+        />
+      )}
     </div>
   );
 };

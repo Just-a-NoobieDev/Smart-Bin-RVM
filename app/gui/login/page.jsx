@@ -45,10 +45,13 @@ const Login = () => {
         .select("number_bottles")
         .eq("student_number", studentNo)
         .gte("date", dateStart)
-        .lte("date", dateEnd)
-        .single();
+        .lte("date", dateEnd);
 
-      if (!limitError && limit.number_bottles < 60) {
+      let numberBottles = limit
+        .map((item) => item.number_bottles)
+        .reduce((a, b) => a + b, 0);
+
+      if (!limitError && numberBottles < 60) {
         const { data, error } = await supabase
           .from("tbl_student_users")
           .select("*")
