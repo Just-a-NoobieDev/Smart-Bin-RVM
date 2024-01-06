@@ -52,6 +52,29 @@ export const Columns = [
     },
   },
   {
+    accessorKey: "status",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost2"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          <span className=" whitespace-nowrap text-[12px] md:text-[14px] lg:text-[16px] md:ml-5 -ml-2 font-bold">
+            Status
+          </span>
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => (
+      <div className="w-full">
+        <div className="uppercase md:ml-8 truncate w-[110px] md:w-[150px] ml-0 text-[10px] md:text-[14px] font-bold text-center">
+          {row.getValue("status")}
+        </div>
+      </div>
+    ),
+  },
+  {
     accessorKey: "Actions",
     id: "actions",
     header: ({ column }) => {

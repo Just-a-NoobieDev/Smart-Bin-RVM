@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { IoMdCopy } from "react-icons/io";
 import { IoDownloadOutline } from "react-icons/io5";
+import { FaCheckCircle } from "react-icons/fa";
 import PointsAllocationDetails from "../components/PointsAllocDetails";
 import ConfirmationModal from "@/components/modals/ConfirmationModal";
 import { AiFillEye } from "react-icons/ai";
@@ -32,7 +33,24 @@ const RowActions = ({ row }) => {
     CustomToast(
       "Success",
       "Point allocation transaction has been deleted successfully",
-      false,
+      false
+    );
+
+    if (error) {
+      CustomToast("Failed", error, false);
+    }
+  };
+
+  const changeStatus = async () => {
+    const { error } = await supabase
+      .from("tbl_points_allocation")
+      .update({ status: "accepted" })
+      .eq("id", data.id);
+
+    CustomToast(
+      "Success",
+      `Point allocation ${data.id} has been accepted successfully`,
+      false
     );
 
     if (error) {
@@ -70,6 +88,14 @@ const RowActions = ({ row }) => {
           >
             <AiFillEye size={20} />
             View Details
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            className="relative flex gap-3 font-bold cursor-default select-none rounded-sm items-center px-2 py-1.5 text-[12px] md:text-[14px] outline-none transition-colors text-opacity-90 hover:bg-[#91B552] hover:text-white w-full data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+            onClick={changeStatus}
+            disabled={data.status == "accepted"}
+          >
+            <FaCheckCircle size={20} />
+            Accept
           </DropdownMenuItem>
           {role == 4 && (
             <div className="relative flex gap-3 font-bold cursor-default select-none rounded-sm items-center px-2 py-1.5 text-[12px] md:text-[14px] outline-none transition-colors text-opacity-90 hover:bg-[#91B552] hover:text-white w-full data-[disabled]:pointer-events-none data-[disabled]:opacity-50">

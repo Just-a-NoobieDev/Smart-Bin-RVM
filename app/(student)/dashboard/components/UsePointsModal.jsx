@@ -92,7 +92,7 @@ const UsePointsModal = () => {
         const used = await getUsedPointsPerSubject();
         const available = 1 - used;
 
-        if (available <= 0) {
+        if (available < 0) {
           CustomToast(
             "Sorry",
             "You don't have enough points. Please add points by collecting bottles with us",
