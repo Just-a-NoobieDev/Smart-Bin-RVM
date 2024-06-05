@@ -59,22 +59,18 @@ const styles = StyleSheet.create({
     fontWeight: "medium",
   },
   image: {
-    width: "60px",
-    height: "50px",
-    marginLeft: "76mm",
-    marginBottom: "2mm",
-    marginTop: "-3mm",
+    position: "absolute",
+    width: "120px",
+    height: "120px",
+    top: "0mm",
+    left: "0mm",
   },
 });
 
 const Receipt = ({ data }) => (
   <Document>
     <Page size="A4" style={styles.page}>
-      <Image
-        src="https://yzppmncmjybezxhcekir.supabase.co/storage/v1/object/public/smart_bin_images/admin_users/909ed22d-87ea-483a-afcb-edfaef65ff57/logo-shadow.png"
-        style={styles.image}
-        alt="logo"
-      />
+      <Image src={data.qr} style={styles.image} alt="logo" />
       <View style={styles.header}>
         <Text>Smart Plastic Bottle Bin:</Text>
         <Text>A Reverse Vending Machine</Text>

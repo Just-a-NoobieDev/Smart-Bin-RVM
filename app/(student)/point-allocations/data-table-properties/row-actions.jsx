@@ -15,8 +15,11 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import Receipt from "@/components/ReceiptPDF";
 
 const RowActions = ({ row }) => {
-  const data = row.original;
   const [isToggled, setIsToggled] = useState(false);
+
+  const qrCode = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${row.original.id}`;
+
+  const data = { ...row.original, qr: qrCode };
 
   const handleDownload = () => {};
 
